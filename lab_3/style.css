@@ -24,7 +24,7 @@ h1, h2, h3 {
 }
 
 p, input, li {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Akronim', cursive;
   color: #2a2a2a;
 }
 
@@ -54,16 +54,19 @@ header {
   margin-bottom: 10px;
   display: flex;
   flex-flow: row wrap;
+  width:1000px;
 }
 
 body > * {
-  background-color: red;
+  background-color: green;
   padding: 1%;
+  width:1000px;
 }
 
 main, header, nav, article, aside, footer, section {
   background-color: rgba(0,255,0,0.5);
   padding: 1%;
+  width:1000px;
 }
 
 h1 {
@@ -118,7 +121,7 @@ article, section {
 }
 
 aside {
-  flex: 1;
+  flex: 3;
   margin-left: 10px;
   padding: 1%;
 }
