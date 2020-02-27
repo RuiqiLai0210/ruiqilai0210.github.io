@@ -1,0 +1,41 @@
+.header{
+    background-color: royalblue;
+    display: flex;
+    color: white;
+    max-width: 1000px;
+    margin:auto;
+    padding:1%;
+    flex-flow: row wrap;
+
+
+}
+
+.header h1{
+    flex:5;
+    font-size: 60px;
+    text-align: left;
+}
+
+.image {
+    display: inline-block;
+    padding: 2px;
+
+
+}
+
+.image img{
+    display: block;
+    height: 100px;
+    margin: auto;
+    flex-flow: row wrap;
+}
+
+.text{
+    background-color: yellowgreen;
+    padding:1%;
+    margin: auto;
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 1000px;
+    font-family: 'Lobster',cursive;
+}
