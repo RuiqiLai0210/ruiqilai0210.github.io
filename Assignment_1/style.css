@@ -17,10 +17,15 @@
 }
 
 .image {
-    display: inline-block;
+    display: block;
     padding: 2px;
+    
 
+}
 
+.image_div {
+    border: 2px dotted black;
+    order: 1;
 }
 
 .image img{
@@ -31,11 +36,58 @@
 }
 
 .text{
-    background-color: yellowgreen;
+    
+    /* flex-wrap: wrap; */
+    background-color: rgb(58, 54, 54);
     padding:1%;
     margin: auto;
     display: flex;
-    flex-flow: row wrap;
+    /* flex-flow: row wrap; */
     max-width: 1000px;
     font-family: 'Lobster',cursive;
+    color: white;
+}
+
+.role{
+    background-color: gray;
+    order:2;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.work_text{
+
+    
+    margin-left: 20px;
+    /* max-width: 500px; */
+}
+
+.work_ex{
+    border: 2px dotted rgb(58, 54, 54);     
+}
+.role_header{
+    font-size: 30px;
+}
+
+
+
+
+
+
+@media only screen and (max-width: 1000px){
+.image_div{
+    display:flex;
+}
+
+.image_div img{
+    order:1;
+}
+
+.image_div p{
+    order:2;
+}
+
+.text{
+    display: block;
+}
 }
