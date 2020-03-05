@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Prof A's Demo Page</title>
+    <title>Ruiqi Lab 4</title>
     <link rel="stylesheet" type="text/css" href="./style.css" />
   </head>
 
   <body>
     <div class="container">
       <div class="wrapper">
-        <div class="top">Prof A's Demo Page</div>
+        <div class="top">Ruiqi's Lab 4</div>
         <button class="activate" onclick="clickMe()">
           Click me to make a change
         </button>
@@ -24,10 +24,31 @@
         <div class="footer"></div>
       </div>
     </div>
+
     <script>
+        var myname, firstname, lastname, length
+       
+        myname = "Ruiqi lai"
+        firstname = myname.substring(0,5)
+        lastname = myname.substring(6,9)
+        length = firstname.length + lastname.length
+
+
       function clickMe() {
+
         const content = document.querySelector(".content");
         content.innerHTML = "Hello world";     
+
+        const p1 = document.createElement("p");
+        p1.setAttribute("class","p1");
+        document.querySelector(".content").appendChild(p1);
+        const p2 = document.createElement("p");
+        p2.setAttribute("class","p2");
+        document.querySelector(".content").appendChild(p2);
+
+        p1.innerHTML = 'My name has ' + length + ' characters';
+        p2.innerHTML = "the third character in my name is " + myname.charAt(2).toLocaleUpperCase() + "<br/>" + lastname.slice(-3);
+
       }
     </script>
   </body>
