@@ -11,48 +11,56 @@
     <div class="wrapper">
       <div class="header">Ruiqi Lai's Lab 5</div>
       <!-- <button class="button" onclick="loadData()">Load Some JSON</button> -->
-      <button class="activate">Click me to replace list
+      <button class="activate" onclick="selects()">Click me to replace list
         entries</button>
       <div class="content">
+        <ol class="countries"></ol>
       </div>
       <div class="footer"></div>
     </div>
   </div>
   <script>
-        function select(){
-      const content = document.querySelector(".content");
-        var selectCountry = [], unselectCountry = [], newlist = document.createElement("ol");
-        newlist.setAttribute("class", "countries");
-        content.replaceChild(newlist, content.childNodes[1]);
-        unselectCountry = [...countries];
-        for(i = 0; i < 25; i++){
-          var rnum;
-          rnum = Math.floor(Math.random()*countries.length);
-          var select = true;
-          while (select){
-            country = countries[rnum];
-            if(selectCountry.include(country)){
-              continue;
-            }
-              else{
-            selectCountry.push(country);
-            unselectedCountries.splice(unselectedCountries.indexOf(country),1);
-            select = false;
+      
+
+      function selects() {
+        const Content = document.querySelector(".content");
+        var selected = [], unselected = [], newlst = document.createElement("ol");
+        newlst.setAttribute("class", "countries");
+        Content.replaceChild(newlst, Content.childNodes[1]);
+        unselected = [...countries];
+
+        for (i = 0; i < 25; i++) {
+          var temp = Math.floor(Math.random() * countries.length);
+          var status = true;
+          while (status) {
+            country = countries[temp];
+            if (selected.includes(country)) {
+              temp = Math.floor(Math.random() * countries.length);
+            } else {
+              selected.push(country);
+              unselected.splice(unselected.indexOf(country),1);
+              selected.sort(function(a, b){
+                if(a.code < b.code) { 
+                  return -1; }
+                if(a.code > b.code) { 
+                  return 1; }
+                return 0;}
+              )
+              status = false;
             }
           }
         }
-        countryList.forEach(enterCountries);
-        console.log("Countries that are not selected:", unselectedCountries, false);
-        
-      function enterCountries(item){
-      var listEntry = document.createElement("li");
-      var injectList = document.querySelector('.countries');
-      listEntry.innerHTML = "<strong>" + item.code + "</strong> " + item.name;
+        selected.forEach(input);
+        console.log("Countries not selected:", unselected, false);
+      }
 
-      injectList.appendChild(listEntry);
-    }
+      function input(item) {
+        var Entry = document.createElement("li");
+        var inject = document.querySelector(".countries");
+        Entry.innerHTML = "<strong>" + item.code + "</strong> " + item.name;
+        inject.appendChild(Entry);
+      }
 
-    }
     /* N.B. - For your lab, use the variable "countries" now available on the window space */
     
     const countries = [
