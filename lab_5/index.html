@@ -2,14 +2,14 @@
 <html lang="en">
 
 <head>
-  <title>Test JSON page</title>
+  <title>Ruiqi Lai's Lab 5</title>
   <link rel="stylesheet" type="text/css" href="./styles.css">
 </head>
 
 <body>
   <div class="container">
     <div class="wrapper">
-      <div class="header">Test JSON page</div>
+      <div class="header">Ruiqi Lai's Lab 5</div>
       <!-- <button class="button" onclick="loadData()">Load Some JSON</button> -->
       <button class="activate">Click me to replace list
         entries</button>
@@ -19,7 +19,42 @@
     </div>
   </div>
   <script>
+        function select(){
+      const content = document.querySelector(".content");
+        var selectCountry = [], unselectCountry = [], newlist = document.createElement("ol");
+        newlist.setAttribute("class", "countries");
+        content.replaceChild(newlist, content.childNodes[1]);
+        unselectCountry = [...countries];
+        for(i = 0; i < 25; i++){
+          var rnum;
+          rnum = Math.floor(Math.random()*countries.length);
+          var select = true;
+          while (select){
+            country = countries[rnum];
+            if(selectCountry.include(country)){
+              continue;
+            }
+              else{
+            selectCountry.push(country);
+            unselectedCountries.splice(unselectedCountries.indexOf(country),1);
+            select = false;
+            }
+          }
+        }
+        countryList.forEach(enterCountries);
+        console.log("Countries that are not selected:", unselectedCountries, false);
+        
+      function enterCountries(item){
+      var listEntry = document.createElement("li");
+      var injectList = document.querySelector('.countries');
+      listEntry.innerHTML = "<strong>" + item.code + "</strong> " + item.name;
+
+      injectList.appendChild(listEntry);
+    }
+
+    }
     /* N.B. - For your lab, use the variable "countries" now available on the window space */
+    
     const countries = [
       { "name": "Afghanistan", "code": "AF" },
       { "name": "Åland Islands", "code": "AX" },
@@ -266,6 +301,8 @@
       { "name": "Zimbabwe", "code": "ZW" }
     ]
     console.log("List of countries in the world", countries);
+
+    
   </script>
 </body>
 
