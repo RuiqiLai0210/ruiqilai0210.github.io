@@ -52,3 +52,9 @@ button {
 .thumb-bar{
   width: 640px;
 }
+
+@media screen and (max-width: 1000px) {
+  .container {
+    justify-content: center;
+  }
+}
