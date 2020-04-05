@@ -48,15 +48,20 @@
       }).addTo(map);
 
       var mckMark = L.marker([38.984901, -76.945221]).addTo(map);
-      mckMark.bindPopup("<b>McKeldin Library</b>").openPopup();
+          mckMark.bindPopup("<b>McKeldin Library</b>");
           mckMark.openPopup();
       
-          var circle = L.circle([38.984901, -76.945221], {
-      color: 'red',
-      fillColor: '#f03',
-      fillOpacity: 0.5,
-      radius: 500
+      var circle = L.circle([38.984901, -76.945221], {
+          color: 'red',
+          fillColor: '#f03',
+          fillOpacity: 0.5,
+        radius: 500
       }).addTo(map);
+
+      const customStyle = {
+        maxWidth: "500",
+        className: "custom",
+      };
 
       fetch("https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json ")
       .then(response => {
@@ -65,10 +70,19 @@
       })
 
       .then(data => {
-        
+          let randomplace = [];
+          for (let i = 0; i<3 ; i++){
+            const randomNum = data[Math.floor(Math.random() * data.length)];    
+              if(randomNum.hasOwnProperty("geocoded_column_1")){
+                randomplace.push(randomNum);
+                const loc = randomplace[i].geocoded_column_1.coordinates.reverse();
+                data.push(randomplace[i]);
+                const mark = L.marker(loc).bindPopup(randomplace[i].name, customStyle).addTo(map);
+              }
+            }
       });
       
 
     </script>
-  </body>
+  </body> 
 </html>
