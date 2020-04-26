@@ -14,6 +14,8 @@
           <form class="targetForm" id="labForm">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" />
+            <label for="zipcode">Zip Code</label>
+            <input type="text" id="zipcode" name="zipcode" />
             <label for="interests">Interests</label>
             <textarea id="interests" name="interests" rows="5" cols="33">
                 Default text says what?
@@ -57,10 +59,24 @@
         })
 
         .then((res) => res.json())
-        .then((res)=>{
-          console.log(res);
+        .then((jsonresponse) => {
+          btn.setAttribute("disabled", true); // prevents button from being clickable again
+
+          const ol = document.createElement("ol"); // creating new HTML element for ordered list
+          target.append(ol); // appending the ordered list to the form (form becomes the parent)
+
+          // Simple for loop to iterate through the list of parsed form entries
+          for(i = 0; i < jsonresponse.length; i++){
+            
+            const li = document.createElement("li"); //  creating new HTML element for ordered list item
+            li.innerHTML = jsonresponse[i]["name"];
+            ol.append(li); // appending the list item to the ordered list (ordered list becomes the parent)
+
+          }
         })
+        
       }
+
       
       const getBtn = document.querySelector('#getBtn');
       formBtn.addEventListener('click',getdata);
