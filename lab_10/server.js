@@ -54,7 +54,7 @@ app
       res.json(result);
     })();
   })
-  .post((req, res) => {
+/*  .post((req, res) => {
     console.log("/api post request", req.body);
     if (!req.body.name) {
       console.log(req.body);
@@ -69,7 +69,7 @@ app
         console.log(err);
       })
     }
-  })
+  })*/
 
   .put((req, res) => {
     console.log("/api put request", req.body);
@@ -82,7 +82,7 @@ app
       writeUser(req.body.name, dbSettings)
         .then((result) => {
           console.log(result);
-          res.send("Aha it worked!"); // simple mode
+          res.json({"success":true,"message":"Aha it worked!"}); // simple mode
         })
         .catch((err) => {
           console.log(err);
