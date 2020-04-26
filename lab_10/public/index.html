@@ -49,6 +49,22 @@
           });
       }
 
+      function getdata(a){
+        a.preventDefault();
+        
+        fetch("/api", {
+          method: "GET",
+        })
+
+        .then((res) => res.json())
+        .then((res)=>{
+          console.log(res);
+        })
+      }
+      
+      const getBtn = document.querySelector('#getBtn');
+      formBtn.addEventListener('click',getdata);
+
       const formBtn = document.querySelector("#formBtn");
       formBtn.addEventListener("click", sendForm);
     </script>
